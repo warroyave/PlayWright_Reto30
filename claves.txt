@@ -1,0 +1,5 @@
+Usuario | password |
+admin	| admin123 |
+admin	| admin1234|
+otro	| admin123 |
+		|			|
