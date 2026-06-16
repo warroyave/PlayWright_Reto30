@@ -67,3 +67,83 @@ test('Navigate throght the left panel', async ({page}) => {
 }
 
 })
+
+test('Check all the qualifications links', async ({page}) => {
+
+    const expectedPages = [
+        {
+            menu: 'Skills',
+            url: '/web/index.php/admin/viewSkills'
+        },
+        {
+            menu: 'Education',
+            url: '/web/index.php/admin/viewEducation'
+        },
+        {
+            menu: 'Licenses',
+            url: '/web/index.php/admin/viewLicenses'
+        }    
+    ]
+    
+    await page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
+    await page.getByRole('textbox', {name: 'Username'}).fill('Admin')
+    await page.getByRole('textbox', {name: 'Password'}).fill('admin123')
+    await page.getByRole('button', {name: 'Login'}).click()
+
+    await expect(page.getByRole('link', {name: 'Admin'})).toBeVisible()
+
+    await page.getByRole('link', {name: 'Admin'}).click()
+
+    await page.getByRole('navigation', {name: 'Topbar menu'}).getByText('Qualifications').click()
+    
+    const qualificationOptions = page.getByRole('menu').locator('li')
+
+    for (let expectedPage of expectedPages){
+        const menuOption = qualificationOptions.filter({hasText: expectedPage.menu})
+        await menuOption.click()
+        await expect(page).toHaveURL(new RegExp(expectedPage.url))
+        await page.getByRole('navigation', {name: 'Topbar menu'}).getByText('Qualifications').click()
+    }
+})
+
+test('Check all the Attendance links', async ({page})=>{
+    const expectedPagesTime = [
+        {
+            menu: 'My Records',
+            url: '/web/index.php/attendance/viewMyAttendanceRecord'
+        },
+        {
+            menu: 'Punch In/Out',
+            url: '/web/index.php/attendance/punchIn'
+        },
+        {
+            menu: 'Employee Records',
+            url: '/web/index.php/attendance/viewAttendanceRecord'
+        },
+        {
+            menu: 'Configuration',
+            url: '/web/index.php/attendance/configure'
+        }
+    ]
+
+        await page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
+    await page.getByRole('textbox', {name: 'Username'}).fill('Admin')
+    await page.getByRole('textbox', {name: 'Password'}).fill('admin123')
+    await page.getByRole('button', {name: 'Login'}).click()
+
+    await expect(page.getByRole('link', {name: 'Admin'})).toBeVisible()
+
+    await page.getByRole('link', {name: 'Time'}).click()
+
+    await page.getByRole('navigation', {name: 'Topbar menu'}).getByText('Attendance').click()
+
+    const attendanceOptions = page.getByRole('menu').locator('li')
+
+    for (let expectedPageTime of expectedPagesTime){
+        const menuOption = attendanceOptions.filter({hasText: expectedPageTime.menu})
+        await menuOption.click()
+        await expect(page).toHaveURL(new RegExp(expectedPageTime.url))
+        await page.getByRole('navigation', {name: 'Topbar menu'}).getByText('Attendance').click()
+    }
+
+})
