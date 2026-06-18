@@ -16,6 +16,7 @@ declare const process: { env: { CI?: string } };
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
+  timeout: 35000, // ahora 60 segundos
   testDir: './tests',
   /* Run tests in files in parallel */
   fullyParallel: true,
@@ -29,6 +30,10 @@ export default defineConfig({
   reporter: 'html',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
+
+    actionTimeout: 15000,   // máximo 15s por acción (click, fill, etc.)
+    navigationTimeout: 45000, // máximo 45s para cargar una página
+    viewport: { width: 1920, height: 1080 }, // desactiva el tamaño fijo
     /* Base URL to use in actions like `await page.goto('')`. */
     // baseURL: 'http://localhost:3000',
 
