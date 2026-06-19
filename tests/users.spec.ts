@@ -1,20 +1,17 @@
 import {expect, test} from "@playwright/test"
+import { LoginPage } from "../pageobjects/LoginPage";
 console.clear();
 
 test('Get all the usernames registered', async ({page}) =>{
-        await page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
-    
-        await page.getByRole('textbox', {name: 'Username'}).fill('Admin')
-        await page.getByRole('textbox', {name: 'Password'}).fill('admin123')
-        await page.getByRole('button',{name: 'login'}).click()
-    
+
+        const loginPage = new LoginPage(page)
+        await loginPage.doLogin('Admin', 'admin123')
+
         await expect(page.getByRole('link',{name: 'Admin'})).toBeVisible()
         
         await page.getByRole('link', {name: 'Admin'}).click()
         await page.getByRole('navigation',{name: 'topbar menu'}).getByText('User Management').click()
         await page.getByRole('menuitem', {name: 'Users'}).click()
-
-        //await page.pause()
 
         const rows = page.getByRole('table').getByRole('row')
         const usernames: string[] = []
@@ -38,11 +35,9 @@ test('Select specific user for edition', async ({page}) =>{
         //Cuando quiero enviar un usuario especifico.
         //const userForEdition = 'warroyave'
 
-        await page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
-    
-        await page.getByRole('textbox', {name: 'Username'}).fill('Admin')
-        await page.getByRole('textbox', {name: 'Password'}).fill('admin123')
-        await page.getByRole('button',{name: 'login'}).click()
+        const loginPage = new LoginPage(page)
+        await loginPage.doLogin('Admin', 'admin123')
+
     
         await expect(page.getByRole('link',{name: 'Admin'})).toBeVisible()
         
@@ -55,10 +50,6 @@ test('Select specific user for edition', async ({page}) =>{
 
         //Filtrar para exluir Admin
         const filteredUsers = userNames.filter(u => u.toLowerCase() !== 'admin')
-
-        /*if (filteredUsers.length === 0) {
-            throw new Error('No hay usuarios disponibles distintos de Admin');
-        }*/
 
         // Elejir uno usuario aleatorio
         const randomUser = filteredUsers[Math.floor(Math.random() * filteredUsers.length)]
@@ -84,9 +75,7 @@ test('Select specific user for edition', async ({page}) =>{
 
         const currentUsername = await page.locator("//label[contains(., 'Username')]/parent::div/following-sibling::div/input")
             .inputValue()
-
-        console.log(randomUser)
-        
+          
         expect(currentUsername).toEqual(randomUser)
 
         expect(page.locator("//label[contains(., 'Username')]/parent::div/following-sibling::div/input"))

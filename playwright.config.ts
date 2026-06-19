@@ -30,11 +30,11 @@ export default defineConfig({
   reporter: 'html',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
-
     actionTimeout: 15000,   // máximo 15s por acción (click, fill, etc.)
     navigationTimeout: 45000, // máximo 45s para cargar una página
-    viewport: { width: 1920, height: 1080 }, // desactiva el tamaño fijo
+    viewport: null, // desactiva el tamaño fijo
     /* Base URL to use in actions like `await page.goto('')`. */
+    baseURL: 'https://opensource-demo.orangehrmlive.com',
     // baseURL: 'http://localhost:3000',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
