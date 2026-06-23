@@ -1,6 +1,6 @@
 import {test, expect} from '@playwright/test'
 import { LoginPage } from "../pageobjects/LoginPage";
-import { SideMenuOption, SidePanel } from '../components/SidePanel';
+import { SearchOptionEnum, SideMenuOption, SidePanel } from '../components/SidePanel';
 console.clear()
 
 test ('Check left menu options', async({page}) => {
@@ -142,15 +142,17 @@ test('Check all the Attendance links', async ({page})=>{
     }
 })
 
-test('Check search option links', async ({page})=>{
-
+// RETO DIA 8
+test('Check search option links', async ({ page }) => {
     const loginPage = new LoginPage(page)
     await loginPage.doLogin('Admin', 'admin123')
-   
 
     const sidePanel = new SidePanel(page)
-    await sidePanel.clickOnOption(SideMenuOption.SEARCH)
-    await page.getByRole('textbox', {name: 'Search'}).fill('Admin')
+    await sidePanel.clickOnSearchOption(SearchOptionEnum.SEARCH)
+    const searchInput = page.getByPlaceholder('Search')
+    await searchInput.fill('Admin')
+
+    await expect(searchInput).toHaveValue('Admin')
 
 })
 

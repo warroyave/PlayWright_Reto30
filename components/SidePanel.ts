@@ -1,37 +1,30 @@
 import { Locator, Page } from "@playwright/test";
 
-export class SearchOption{
+// Explicación Reto dia 8
+export class SidePanel {
     readonly page: Page
-    constructor(page: Page){
+    constructor(page: Page) {
         this.page = page
     }
-    private searchOption(option:SearchOption):Locator{
-        return this.page.getByRole('textbox', {name: option}) 
+    
+    
+    private menuOption(option: SideMenuOption): Locator {
+        return this.page.locator('.oxd-main-menu-item').filter({ hasText: option })
     }
-    async clickOnSearchOption(option: SearchOption){
+    async clickOnOption(option: SideMenuOption) {
+        await this.menuOption(option).click()
+    }
+    
+    private searchOption(option: SearchOptionEnum): Locator {
+        return this.page.getByPlaceholder(option)
+    }
+    
+    async clickOnSearchOption(option: SearchOptionEnum) {
         await this.searchOption(option).click()
     }
 }
 
-export class SidePanel{
- 
-    readonly page: Page
-    constructor(page: Page){
-        this.page = page
-    }
-
-    private menuOption(option: SideMenuOption):Locator{
-        return this.page.getByRole('link', {name: option})
-    }
-
-    async clickOnOption(option: SideMenuOption){
-        await this.menuOption(option).click()
-    }
-
-}
-
 export enum SideMenuOption{
-    SEARCH = 'Search',
     ADMIN = 'Admin',
     PIM = 'PIM',
     LEAVE = 'Leave',
@@ -43,5 +36,10 @@ export enum SideMenuOption{
     DIRECTORY = 'Directory',
     MAINTENANCE = 'Maintenance',
     CLAIM = 'Claim',
-    BUZZ = 'Buzz'
+    BUZZ = 'Buzz',
+    //SEARCH = 'Search'
+}
+
+export enum SearchOptionEnum {
+  SEARCH = 'Search'
 }
