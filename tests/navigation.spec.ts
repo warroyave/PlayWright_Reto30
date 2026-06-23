@@ -1,5 +1,6 @@
 import {test, expect} from '@playwright/test'
 import { LoginPage } from "../pageobjects/LoginPage";
+import { SideMenuOption, SidePanel } from '../components/SidePanel';
 console.clear()
 
 test ('Check left menu options', async({page}) => {
@@ -139,5 +140,17 @@ test('Check all the Attendance links', async ({page})=>{
         await expect(page).toHaveURL(new RegExp(expectedPageTime.url))
         await page.getByRole('navigation', {name: 'Topbar menu'}).getByText('Attendance').click()
     }
+})
+
+test('Check search option links', async ({page})=>{
+
+    const loginPage = new LoginPage(page)
+    await loginPage.doLogin('Admin', 'admin123')
+   
+
+    const sidePanel = new SidePanel(page)
+    await sidePanel.clickOnOption(SideMenuOption.SEARCH)
+    await page.getByRole('textbox', {name: 'Search'}).fill('Admin')
 
 })
+
