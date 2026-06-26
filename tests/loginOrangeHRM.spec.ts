@@ -6,10 +6,10 @@ console.clear();
 test('login orange hrm', async ({page}) => {
 
     const loginPage = new LoginPage(page)
-    await loginPage.doLogin('Admin', 'admin123')
+    await loginPage.loginAsAdmin()
 
     const sidePanel = new SidePanel(page)
-    await sidePanel.clickOnOption(SideMenuOption.SEARCH)
+    // await sidePanel.clickOnOption(SideMenuOption.SEARCH)
     await sidePanel.clickOnOption(SideMenuOption.ADMIN)
     await sidePanel.clickOnOption(SideMenuOption.TIME)
     await sidePanel.clickOnOption(SideMenuOption.PERFORMANCE)
@@ -27,3 +27,12 @@ test('Error en Login Orange hrm', async({page})=>{
     await expect(page.locator("text=Invalid credentials")).toBeVisible();
 
 })
+
+test('Login Orange hrm con usuario empleado', async({page})=>{
+
+    const loginPage = new LoginPage(page)
+    await loginPage.loginAsEmployee()
+
+    await expect(page.getByRole('link', {name: 'Admin'})).not.toBeVisible()
+
+});

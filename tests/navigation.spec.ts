@@ -5,9 +5,9 @@ console.clear()
 
 test ('Check left menu options', async({page}) => {
     await page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
-    await page.getByRole('textbox', {name: 'Username'}).fill('Admin')
-    await page.getByRole('textbox', {name: 'Password'}).fill('admin123')
-    await page.getByRole('button', {name: 'Login'}).click()
+    
+    const loginPage = new LoginPage(page)
+    await loginPage.loginAsAdmin()
 
     await expect(page.getByRole('link', {name: 'Admin'})).toBeVisible()
 
@@ -38,7 +38,7 @@ test ('Check left menu options', async({page}) => {
 test('Navigate throght the left panel', async ({page}) => {
 
     const loginPage = new LoginPage(page)
-    await loginPage.doLogin('Admin', 'admin123')
+    await loginPage.loginAsAdmin()
 
     await expect(page.getByRole('link', {name: 'Admin'})).toBeVisible()
 
@@ -87,7 +87,7 @@ test('Check all the qualifications links', async ({page}) => {
     ]
     
     const loginPage = new LoginPage(page)
-    await loginPage.doLogin('Admin', 'admin123')
+    await loginPage.loginAsAdmin()
 
     await expect(page.getByRole('link', {name: 'Admin'})).toBeVisible()
     await page.getByRole('link', {name: 'Admin'}).click()
@@ -124,7 +124,7 @@ test('Check all the Attendance links', async ({page})=>{
     ]
 
     const loginPage = new LoginPage(page)
-    await loginPage.doLogin('Admin', 'admin123')
+    await loginPage.loginAsAdmin()
 
     await expect(page.getByRole('link', {name: 'Admin'})).toBeVisible()
 
@@ -145,7 +145,7 @@ test('Check all the Attendance links', async ({page})=>{
 // RETO DIA 8
 test('Check search option links', async ({ page }) => {
     const loginPage = new LoginPage(page)
-    await loginPage.doLogin('Admin', 'admin123')
+    await loginPage.loginAsAdmin()
 
     const sidePanel = new SidePanel(page)
     await sidePanel.clickOnSearchOption(SearchOptionEnum.SEARCH)
