@@ -4,7 +4,7 @@ console.clear();
 
 test('Get all the usernames registered', async ({page}) =>{
         const loginPage = new LoginPage(page)
-        await loginPage.doLogin('Admin', 'admin123')
+        await loginPage.loginAsAdmin()
     
         await expect(page.getByRole('link',{name: 'Admin'})).toBeVisible()
         

@@ -1,6 +1,8 @@
 import {test, expect} from '@playwright/test'
 import { LoginPage } from "../pageobjects/LoginPage";
 import { SearchOptionEnum, SideMenuOption, SidePanel } from '../components/SidePanel';
+import { TopBarMenu } from '../components/top-bar-menu/TopBarMenu';
+
 console.clear()
 
 test ('Check left menu options', async({page}) => {
@@ -156,3 +158,53 @@ test('Check search option links', async ({ page }) => {
 
 })
 
+test('Testing Job in topbar menu', async ({ page }) => {
+    
+    const loginPage = new LoginPage(page)
+    await loginPage.loginAsAdmin()
+
+    const sidePanel = new SidePanel(page)
+    await sidePanel.clickOnOption(SideMenuOption.ADMIN)
+    
+    const topBarMenu = new TopBarMenu(page)
+    await topBarMenu.job.clickOnJobTitles()
+    await topBarMenu.job.clickOnPayGrades()
+    await topBarMenu.job.clickOnEmploymentStatus()
+    await topBarMenu.job.clickOnJobCategories()
+    await topBarMenu.job.clickOnWorkShiftsOption()
+
+    await topBarMenu.userManagement.clickOnUsers()
+
+});
+
+test('Testing Organization in topbar menu', async ({ page })=>{
+    const loginPage = new LoginPage(page)
+    await loginPage.loginAsAdmin()
+
+    const sidePanel = new SidePanel(page)
+    await sidePanel.clickOnOption(SideMenuOption.ADMIN)
+
+    const topBarMenu = new TopBarMenu(page)
+    await topBarMenu.organization.clickOnGeneralInformation()
+    await topBarMenu.organization.clickOnLocations()
+    await topBarMenu.organization.clickOnStructure()
+
+});
+
+test('Testing Qualifications in topbar menu', async ({ page })=>{
+    const loginPage = new LoginPage(page)
+    await loginPage.loginAsAdmin()
+
+    const sidePanel = new SidePanel(page)
+    await sidePanel.clickOnOption(SideMenuOption.ADMIN)
+
+    const topBarMenu = new TopBarMenu(page)
+    await topBarMenu.qualifications.clickOnSkills()
+    await topBarMenu.qualifications.clickOnEducation()
+    await topBarMenu.qualifications.clickOnLicenses()
+    await topBarMenu.qualifications.clickOnLanguages()
+    await topBarMenu.qualifications.clickOnMemberships()
+
+    await (topBarMenu.nationalities as any).clickOnNationalities()
+
+});
