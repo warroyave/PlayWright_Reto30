@@ -1,0 +1,41 @@
+Bienvenida al reto automatiza 30 días con Playwright
+https://www.youtube.com/watch?v=Qb-2wHUVVas&list=PLeo6Q1inqlOdzmWkbp0KqG79x2JM1OgzN
+
+Reto Automatiza en 30 Días con Playwright | Día 1: Automatiza el Login de OrangeHRM
+https://www.youtube.com/watch?v=HrwImJ2ciFg
+
+Reto Automatiza en 30 Días con Playwright | Día 2: Captura los usernames de OrangeHRM
+https://www.youtube.com/watch?v=US8MRQygNtQ
+
+Reto Automatiza en 30 Días con Playwright | Día 3: - Validar Opciones del Menú Lateral
+https://www.youtube.com/watch?v=cFpY2ureW34
+
+Reto Automatiza en 30 Días con Playwright | Día 4: - Navegar por el Menú Lateral
+https://www.youtube.com/watch?v=NrOlEMsJvvE
+
+Reto Automatiza en 30 Días con Playwright | Día 5: - Validación de navegación en menús
+https://www.youtube.com/watch?v=28fLTSqYVJg
+
+Reto Automatiza en 30 Días con Playwright | Día 6: - Seleccionar un usuario para Editar #testing
+https://www.youtube.com/watch?v=153RveVFdG0
+
+Reto Automatiza en 30 Días con Playwright | Día 7: - Refactor al loginpage #testing #pageobjects
+https://www.youtube.com/watch?v=oP9_1ZxIbRw
+
+Reto Automatiza en 30 Días con Playwright | Día 8: - Refactor al side panel #playwright
+https://www.youtube.com/watch?v=3sgnFQBTpJE
+
+Reto Automatiza en 30 Días con Playwright | Día 9: - Leyendo credenciales #playwright
+https://www.youtube.com/watch?v=yVFdvGa-s-k
+
+Reto Automatiza en 30 Días con Playwright | Día 10: - Refactorizando topbar #playwright
+https://www.youtube.com/watch?v=Cvd0cYrpskQ
+
+Reto Automatiza en 30 Días con Playwright | Día 11: - Capturando elementos que desaparecen
+https://www.youtube.com/watch?v=xhbv_5e0RZo
+
+Reto Automatiza en 30 Días con Playwright | Día 12: -Filtrando por usuario admin #playwright
+https://www.youtube.com/watch?v=KRHCrTrZw1A
+
+Reto Automatiza en 30 Días con Playwright | Día 13: Reutilizando la autenticación #playwright
+https://www.youtube.com/watch?v=2Bd2obN7gLE
