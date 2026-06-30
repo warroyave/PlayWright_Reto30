@@ -18,6 +18,7 @@ export class LoginPage {
     async doLogin(username: string, password: string){
         
         await this.page.goto('/web/index.php/auth/login')
+        
         await this.usernameImput.fill(username)
         await this.passwordImput.fill(password)
         await this.loginButton.click()
@@ -29,6 +30,14 @@ export class LoginPage {
             Enviroment.ADMIN_PASSWORD
         )
     }
+
+    async loginAsAdminError(){
+        await this.doLogin(
+            Enviroment.ADMINERROR_USERNAME,
+            Enviroment.ADMINERROR_PASSWORD
+        )
+    }
+
 // Reto 9
     async loginAsEmployee(){
         await this.doLogin(

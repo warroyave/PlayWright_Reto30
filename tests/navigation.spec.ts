@@ -8,8 +8,10 @@ console.clear()
 test ('Check left menu options', async({page}) => {
     await page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
     
-    const loginPage = new LoginPage(page)
-    await loginPage.loginAsAdmin()
+    /*const loginPage = new LoginPage(page)
+    await loginPage.loginAsAdmin()*/
+
+    await page.goto('/web/index.php/dashboard/index')
 
     await expect(page.getByRole('link', {name: 'Admin'})).toBeVisible()
 
@@ -39,8 +41,10 @@ test ('Check left menu options', async({page}) => {
 
 test('Navigate throght the left panel', async ({page}) => {
 
-    const loginPage = new LoginPage(page)
-    await loginPage.loginAsAdmin()
+    /*const loginPage = new LoginPage(page)
+    await loginPage.loginAsAdmin()*/
+
+    await page.goto('/web/index.php/dashboard/index')
 
     await expect(page.getByRole('link', {name: 'Admin'})).toBeVisible()
 
@@ -88,8 +92,10 @@ test('Check all the qualifications links', async ({page}) => {
         }    
     ]
     
-    const loginPage = new LoginPage(page)
-    await loginPage.loginAsAdmin()
+    /*const loginPage = new LoginPage(page)
+    await loginPage.loginAsAdmin()*/
+
+    await page.goto('/web/index.php/dashboard/index')
 
     await expect(page.getByRole('link', {name: 'Admin'})).toBeVisible()
     await page.getByRole('link', {name: 'Admin'}).click()
@@ -125,8 +131,10 @@ test('Check all the Attendance links', async ({page})=>{
         }
     ]
 
-    const loginPage = new LoginPage(page)
-    await loginPage.loginAsAdmin()
+    /*const loginPage = new LoginPage(page)
+    await loginPage.loginAsAdmin()*/
+
+    await page.goto('/web/index.php/dashboard/index')
 
     await expect(page.getByRole('link', {name: 'Admin'})).toBeVisible()
 
@@ -146,8 +154,11 @@ test('Check all the Attendance links', async ({page})=>{
 
 // RETO DIA 8
 test('Check search option links', async ({ page }) => {
-    const loginPage = new LoginPage(page)
-    await loginPage.loginAsAdmin()
+    
+    /*const loginPage = new LoginPage(page)
+    await loginPage.loginAsAdmin()*/
+
+    await page.goto('/web/index.php/dashboard/index')
 
     const sidePanel = new SidePanel(page)
     await sidePanel.clickOnSearchOption(SearchOptionEnum.SEARCH)
@@ -160,8 +171,10 @@ test('Check search option links', async ({ page }) => {
 
 test('Testing Job in topbar menu', async ({ page }) => {
     
-    const loginPage = new LoginPage(page)
-    await loginPage.loginAsAdmin()
+    /*const loginPage = new LoginPage(page)
+    await loginPage.loginAsAdmin()*/
+
+    await page.goto('/web/index.php/dashboard/index')
 
     const sidePanel = new SidePanel(page)
     await sidePanel.clickOnOption(SideMenuOption.ADMIN)
@@ -178,8 +191,11 @@ test('Testing Job in topbar menu', async ({ page }) => {
 });
 
 test('Testing Organization in topbar menu', async ({ page })=>{
-    const loginPage = new LoginPage(page)
-    await loginPage.loginAsAdmin()
+    
+    /*const loginPage = new LoginPage(page)
+    await loginPage.loginAsAdmin()*/
+
+    await page.goto('/web/index.php/dashboard/index')
 
     const sidePanel = new SidePanel(page)
     await sidePanel.clickOnOption(SideMenuOption.ADMIN)
@@ -192,8 +208,11 @@ test('Testing Organization in topbar menu', async ({ page })=>{
 });
 
 test('Testing Qualifications in topbar menu', async ({ page })=>{
-    const loginPage = new LoginPage(page)
-    await loginPage.loginAsAdmin()
+    
+    /*const loginPage = new LoginPage(page)
+    await loginPage.loginAsAdmin()*/
+
+    await page.goto('/web/index.php/dashboard/index')
 
     const sidePanel = new SidePanel(page)
     await sidePanel.clickOnOption(SideMenuOption.ADMIN)

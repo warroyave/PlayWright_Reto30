@@ -3,8 +3,11 @@ import { LoginPage } from "../pageobjects/LoginPage";
 console.clear();
 
 test('Get all the usernames registered', async ({page}) =>{
-        const loginPage = new LoginPage(page)
-        await loginPage.loginAsAdmin()
+        
+    /*const loginPage = new LoginPage(page)
+        await loginPage.loginAsAdmin()*/
+
+        await page.goto('/web/index.php/dashboard/index')
     
         await expect(page.getByRole('link',{name: 'Admin'})).toBeVisible()
         

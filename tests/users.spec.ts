@@ -5,8 +5,10 @@ console.clear();
 
 test('Get all the usernames registered', async ({page}) =>{
 
-        const loginPage = new LoginPage(page)
-        await loginPage.loginAsAdmin()
+        /*const loginPage = new LoginPage(page)
+        await loginPage.loginAsAdmin()*/
+        
+        await page.goto('/web/index.php/dashboard/index')
 
         await expect(page.getByRole('link',{name: 'Admin'})).toBeVisible()
         
@@ -36,9 +38,10 @@ test('Select specific user for edition', async ({page}) =>{
         //Cuando quiero enviar un usuario especifico.
         //const userForEdition = 'warroyave'
 
-        const loginPage = new LoginPage(page)
-        await loginPage.loginAsAdmin()
+        /*const loginPage = new LoginPage(page)
+        await loginPage.loginAsAdmin()*/
 
+        await page.goto('/web/index.php/dashboard/index')
     
         await expect(page.getByRole('link',{name: 'Admin'})).toBeVisible()
         
@@ -88,8 +91,10 @@ test('Check user role options', async ({page}) => {
 
     const expectedRoleOptions = [ '-- Select --', 'Admin', 'ESS' ]
 
-    const loginPage = new LoginPage(page)
-    await loginPage.loginAsAdmin()
+    /*const loginPage = new LoginPage(page)
+    await loginPage.loginAsAdmin()*/
+
+    await page.goto('/web/index.php/dashboard/index')
 
     const sidePanel = new SidePanel(page)
     await sidePanel.clickOnOption(SideMenuOption.ADMIN)
@@ -108,8 +113,10 @@ test('Check user status options', async ({page}) => {
 
     const expectedStatusOptions = [ '-- Select --', 'Enabled', 'Disabled']
 
-    const loginPage = new LoginPage(page)
-    await loginPage.loginAsAdmin()
+    /*const loginPage = new LoginPage(page)
+    await loginPage.loginAsAdmin()*/
+
+    await page.goto('/web/index.php/dashboard/index')
 
     const sidePanel = new SidePanel(page)
     await sidePanel.clickOnOption(SideMenuOption.ADMIN)
@@ -126,8 +133,10 @@ test('Check user status options', async ({page}) => {
 // Reto dia 12
 test('Filter by user admin', async ({page}) => {
     
-    const loginPage = new LoginPage(page)
-    await loginPage.loginAsAdmin()
+    /*const loginPage = new LoginPage(page)
+    await loginPage.loginAsAdmin()*/
+
+    await page.goto('/web/index.php/dashboard/index')
 
     const sidePanel = new SidePanel(page)
     await sidePanel.clickOnOption(SideMenuOption.ADMIN)

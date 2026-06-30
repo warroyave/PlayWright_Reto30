@@ -1,3 +1,7 @@
+PROGRAMA RETO 30 DIAS
+
+URL para el RETO https://opensource-demo.orangehrmlive.com
+
 Bienvenida al reto automatiza 30 días con Playwright
 https://www.youtube.com/watch?v=Qb-2wHUVVas&list=PLeo6Q1inqlOdzmWkbp0KqG79x2JM1OgzN
 
@@ -39,3 +43,7 @@ https://www.youtube.com/watch?v=KRHCrTrZw1A
 
 Reto Automatiza en 30 Días con Playwright | Día 13: Reutilizando la autenticación #playwright
 https://www.youtube.com/watch?v=2Bd2obN7gLE
+
+Reto Automatiza en 30 Días con Playwright | Día 14: Suma valores de una tabla con #playwright
+https://www.youtube.com/watch?v=_oiZzoNJeYs
+
