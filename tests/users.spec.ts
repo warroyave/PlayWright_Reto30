@@ -1,6 +1,7 @@
 import {expect, test} from "@playwright/test"
 import { LoginPage } from "../pageobjects/LoginPage";
 import { SideMenuOption, SidePanel } from '../components/SidePanel';
+import { maxHeaderSize } from "node:http";
 console.clear();
 
 test('Get all the usernames registered', async ({page}) =>{
@@ -161,5 +162,49 @@ test('Filter by user admin', async ({page}) => {
     for (let i = 0; i < expectedAdminCount; i++){
         await expect(allBodyRows.nth(i).getByRole('cell').nth(2)).toContainText('Admin')
     }
+
+})
+
+test ('Capture all amounts', async({page}) =>{
+    await page.goto('/web/index.php/claim/viewAssignClaim')
+
+    const allBodyRows = page.getByRole('table').getByRole('rowgroup').nth(1).getByRole('row')
+    const amounts: number[] = []
+    
+    const rowCount = await allBodyRows.count()
+    console.log('Number of rows', rowCount)
+
+    for(let i = 0; i < rowCount; i++){
+        const amountCell = allBodyRows.nth(i).getByRole('cell').nth(7)
+        const amountText = await amountCell.textContent()
+        console.log('This is the amount in text:', amountText)
+
+        if (amountText === null) {
+            continue
+        }
+         const convertedNumber = parseFloat(amountText?.replace(/,/g, '').trim())
+         amounts.push(convertedNumber)
+    }
+
+    console.log(amounts)
+
+    let total = 0
+    let promedio = 0
+    let maximo = 0
+    let minimo = 0
+
+    for (let amount of amounts){
+        total += amount
+    }
+
+    promedio = total / rowCount
+    maximo = Math.max(...amounts)
+    minimo = Math.min(...amounts)
+
+    console.log ('Total is: ', total )
+    console.log ('Promedio is: ', promedio )
+    console.log('Valor Maximo: ', maximo)
+    console.log('Valor Minimo: ', minimo)
+
 
 })
