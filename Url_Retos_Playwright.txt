@@ -47,3 +47,8 @@ https://www.youtube.com/watch?v=2Bd2obN7gLE
 Reto Automatiza en 30 Días con Playwright | Día 14: Suma valores de una tabla con #playwright
 https://www.youtube.com/watch?v=_oiZzoNJeYs
 
+Reto Automatiza en 30 Días con Playwright | Día 15: Agregar un nuevo usuario #playwright
+https://www.youtube.com/watch?v=Nw5Wy9qOdkY&feature=youtu.be
+
+Reto Automatiza en 30 Días con Playwright | Día 16: Refactorizando a POM flujo de agregar usuario
+https://www.youtube.com/watch?v=BBx-4MfAz3M

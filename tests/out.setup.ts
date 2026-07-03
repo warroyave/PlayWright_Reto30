@@ -2,7 +2,7 @@ import {test as setup, expect} from '@playwright/test'
 import { LoginPage} from '../pageobjects/LoginPage'
 
 
-setup('Authentication as Admin', async ({page}) => {
+/*setup('Authentication as Admin', async ({page}) => {
 
     console.log('Autenticación iniciada usando el setup')
 
@@ -18,9 +18,9 @@ setup('Authentication as Admin', async ({page}) => {
 
     console.log('Autenticación completada usando el setup')
 
-})
+})*/
 
-setup('Authentication as employee', async ({page}) => {
+/*setup('Authentication as employee', async ({page}) => {
 
     console.log('Autenticación iniciada usando el setup')
     // Iniciar sesion
@@ -33,9 +33,9 @@ setup('Authentication as employee', async ({page}) => {
     await page.context().storageState({path: '.auth/employee.json'})
 
     console.log('Autenticación completada usando el setup')
-})
+})*/
 
-setup('Error en Login Orange hrm', async ({page}) => {
+/*setup('Error en Login Orange hrm', async ({page}) => {
 
     console.log('Autenticación iniciada usando el setup')
 
@@ -51,5 +51,5 @@ setup('Error en Login Orange hrm', async ({page}) => {
 
     console.log('Autenticación completada usando el setup')
 
-})
+})*/
 

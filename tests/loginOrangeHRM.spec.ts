@@ -22,19 +22,16 @@ test('Login orange hrm', async ({page}) => {
     await expect(page.getByRole('heading',{name: 'Dashboard'})).toBeVisible()*/
 })
 // Test para credenciales invalidas
-test('Error en Login Orange hrm', async({page})=>{
+test('Error en Login Orange hrm', async ({ page }) => {
+    await page.goto('/web/index.php/auth/login');
 
-    /*const loginPage = new LoginPage(page)
-    await loginPage.doLogin('Admin', 'admin1234')*/
+    const loginPage = new LoginPage(page);
+    await loginPage.loginAsAdminError();
 
-    /*const loginPage = new LoginPage(page)
-    await loginPage.loginAsAdminError()*/
-    
-    await page.goto("/web/index.php/auth/login")
-    await page.waitForTimeout(2000); // Espera 3 segundos
-    //await expect(page.locator("text=Invalid credentials")).toBeVisible();
-
-})
+    await expect(
+        page.getByText('Invalid credentials')
+    ).toBeVisible();
+});
 
 // Test para usuario como Empleado
 test('Login Orange hrm con usuario empleado', async({page})=>{

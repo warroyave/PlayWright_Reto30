@@ -47,40 +47,42 @@ export default defineConfig({
 
   /* Configure projects for major browsers */
   projects: [
-    {
-      name: 'setup',
-      testMatch: /.*\.setup\.ts/,
-    },
-    {
-      name: 'admin',
-      dependencies: ['setup'],
-      use: {
-        ...devices['Desktop Chrome'],
-        storageState: '.auth/admin.json'
-      },
-    },
+  {
+    name: 'admin-setup',
+    testMatch: /admin\.setup\.ts/,
+  },
 
-    {
-      name: 'employee',
-      dependencies: ['setup'],
-      use: {
-        ...devices['Desktop Chrome'],
-        storageState: '.auth/employee.json'
-      },
-    },
-    {
-      name: 'adminError',
-      dependencies: ['setup'],
-      use: {
-        ...devices['Desktop Chrome'],
-        storageState: '.auth/adminError.json'
-      },
-    },
+  {
+    name: 'employee-setup',
+    testMatch: /employee\.setup\.ts/,
+  },
 
-    {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+  {
+    name: 'admin',
+    dependencies: ['admin-setup'],
+    use: {
+      ...devices['Desktop Chrome'],
+      storageState: '.auth/admin.json',
     },
+  },
+
+  {
+    name: 'employee',
+    dependencies: ['employee-setup'],
+    use: {
+      ...devices['Desktop Chrome'],
+      storageState: '.auth/employee.json',
+    },
+  },
+
+  // Opcional: para pruebas sin autenticación
+  {
+    name: 'chromium',
+    use: {
+      ...devices['Desktop Chrome'],
+    },
+  },
+
 /*
     {
       name: 'firefox',
