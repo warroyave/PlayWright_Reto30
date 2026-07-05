@@ -1,0 +1,14 @@
+import { Page } from '@playwright/test'
+
+export class Navigate {
+    readonly page: Page
+    
+    constructor(page: Page) {
+        this.page = page
+  }
+  
+  async toDasboard(){
+    await this.page.goto('/web/index.php/dashboard/index')
+  }
+
+}
