@@ -1,4 +1,5 @@
 import { expect, Locator, Page } from "@playwright/test";
+import { UserModel } from "../models/UserModel";
 // RETO 16
 export class AddNewUserPage {
 
@@ -121,4 +122,16 @@ export class AddNewUserPage {
     async checkuserWassAddMessage(): Promise<void> {
         await this.verifyUserWasAdded();
     }
+    // Reto 17
+    async addNewUser(user: UserModel){
+        await this.clickOnAdd()
+        await this.selectUserRole(user.role)
+        await this.selectEmployeeName(user.employeeName)
+        await this.selectStatus(user.status)
+        await this.enterUsername(user.username)
+        await this.enterPassword(user.password)
+        await this.enterConfirmPassword(user.confirmPassword)
+        await this.clickOnSave()
+    }
+ 
 }
