@@ -210,14 +210,14 @@ test ('Capture all amounts', async({page}) =>{
     console.log('Valor Minimo: ', minimo)
 })
 
-test('Add new user', async ({page}) => {
-    
-    const randomUsername = 'goku' + crypto.randomUUID()
-    const password = 'Password123'
-    const employeeToSearch = 'Qwerty LName'
+test('Add new user admin', async ({page}) => {
 
     const navigate = new Navigate(page)
     await navigate.toDasboard()
+    
+    const randomUsername = 'goku' + crypto.randomUUID().slice(0, 30)
+    const password = 'Password123'
+    const employeeToSearch = 'Qwerty LName'  
 
     const sidePanel = new SidePanel(page)
     await sidePanel.clickOnOption(SideMenuOption.ADMIN)
@@ -225,10 +225,28 @@ test('Add new user', async ({page}) => {
     const topbarmenu = new TopBarMenu(page)
     await topbarmenu.userManagement.clickOnUsers()
 
-    const adminUser= UserFactory.createAdmin({
-        employeeName: 'Olivia akhil Harper'
+    const allBodyRows = page.getByRole('table').getByRole('rowgroup').nth(1).getByRole('row')
+    
+    // Filas que contienen el rol Admin
+    const currentAdminRows= allBodyRows.filter({
+        has:page.getByRole('cell').nth(2).getByText('Admin')
     })
 
+    const firstAdminToSearch = currentAdminRows.nth(0)
+    await expect(firstAdminToSearch, 'No admin users found in the table.').toHaveCount(1)
+
+    await firstAdminToSearch
+    .locator('button')
+    .filter({has: page.locator('i.bi-pencil-fill') }).click()
+
+    const fullUserToSearch = await page.getByRole('textbox', {name: 'Type for hints...'}).inputValue()
+    console.log(`User to search: ${fullUserToSearch}`)
+
+    const adminUser= UserFactory.createAdmin({
+        employeeName: fullUserToSearch
+    })
+
+    await page.goBack()
 
     const addNewUserPage = new AddNewUserPage(page)
     await addNewUserPage.addNewUser(adminUser)
@@ -298,4 +316,47 @@ test('Validate different passwords when adding a new user', async ({ page }) => 
     await expect(
         page.getByText('Passwords do not match')
     ).toBeVisible()
+})
+
+test('Add new user ESS', async ({page}) => {
+
+    const navigate = new Navigate(page)
+    await navigate.toDasboard()
+    
+    const randomUsername = 'goku' + crypto.randomUUID().slice(0, 30)
+    const password = 'Password123'
+    const employeeToSearch = 'Qwerty LName'  
+
+    const sidePanel = new SidePanel(page)
+    await sidePanel.clickOnOption(SideMenuOption.ADMIN)
+
+    const topbarmenu = new TopBarMenu(page)
+    await topbarmenu.userManagement.clickOnUsers()
+
+    const allBodyRows = page.getByRole('table').getByRole('rowgroup').nth(1).getByRole('row')
+    
+    // Filas que contienen el rol Admin
+    const currentAdminRows= allBodyRows.filter({
+        has:page.getByRole('cell').nth(2).getByText('ESS')
+    })
+
+    const firstAdminToSearch = currentAdminRows.nth(0)
+    await expect(firstAdminToSearch, 'No ESS users found in the table.').toHaveCount(1)
+
+    await firstAdminToSearch
+    .locator('button')
+    .filter({has: page.locator('i.bi-pencil-fill') }).click()
+
+    const fullUserToSearch = await page.getByRole('textbox', {name: 'Type for hints...'}).inputValue()
+    console.log(`User to search: ${fullUserToSearch}`)
+
+    const adminUser= UserFactory.createAdmin({
+        employeeName: fullUserToSearch
+    })
+
+    await page.goBack()
+
+    const addNewUserPage = new AddNewUserPage(page)
+    await addNewUserPage.addNewUser(adminUser)
+    await addNewUserPage.checkuserWassAddMessage()    
 })

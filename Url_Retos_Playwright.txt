@@ -1,61 +1,65 @@
 PROGRAMA RETO 30 DIAS
 
+Reto Automatiza en 30 Días con Playwright
+
 URL para el RETO https://opensource-demo.orangehrmlive.com
 
 Bienvenida al reto automatiza 30 días con Playwright
 https://www.youtube.com/watch?v=Qb-2wHUVVas&list=PLeo6Q1inqlOdzmWkbp0KqG79x2JM1OgzN
 
-Reto Automatiza en 30 Días con Playwright | Día 1: Automatiza el Login de OrangeHRM
+Día 1: Automatiza el Login de OrangeHRM
 https://www.youtube.com/watch?v=HrwImJ2ciFg
 
-Reto Automatiza en 30 Días con Playwright | Día 2: Captura los usernames de OrangeHRM
+Día 2: Captura los usernames de OrangeHRM
 https://www.youtube.com/watch?v=US8MRQygNtQ
 
-Reto Automatiza en 30 Días con Playwright | Día 3: - Validar Opciones del Menú Lateral
+Día 3: - Validar Opciones del Menú Lateral
 https://www.youtube.com/watch?v=cFpY2ureW34
 
-Reto Automatiza en 30 Días con Playwright | Día 4: - Navegar por el Menú Lateral
+Día 4: - Navegar por el Menú Lateral
 https://www.youtube.com/watch?v=NrOlEMsJvvE
 
-Reto Automatiza en 30 Días con Playwright | Día 5: - Validación de navegación en menús
+Día 5: - Validación de navegación en menús
 https://www.youtube.com/watch?v=28fLTSqYVJg
 
-Reto Automatiza en 30 Días con Playwright | Día 6: - Seleccionar un usuario para Editar #testing
+Día 6: - Seleccionar un usuario para Editar #testing
 https://www.youtube.com/watch?v=153RveVFdG0
 
-Reto Automatiza en 30 Días con Playwright | Día 7: - Refactor al loginpage #testing #pageobjects
+Día 7: - Refactor al loginpage #testing #pageobjects
 https://www.youtube.com/watch?v=oP9_1ZxIbRw
 
-Reto Automatiza en 30 Días con Playwright | Día 8: - Refactor al side panel #playwright
+Día 8: - Refactor al side panel #playwright
 https://www.youtube.com/watch?v=3sgnFQBTpJE
 
-Reto Automatiza en 30 Días con Playwright | Día 9: - Leyendo credenciales #playwright
+Día 9: - Leyendo credenciales #playwright
 https://www.youtube.com/watch?v=yVFdvGa-s-k
 
-Reto Automatiza en 30 Días con Playwright | Día 10: - Refactorizando topbar #playwright
+Día 10: - Refactorizando topbar #playwright
 https://www.youtube.com/watch?v=Cvd0cYrpskQ
 
-Reto Automatiza en 30 Días con Playwright | Día 11: - Capturando elementos que desaparecen
+Día 11: - Capturando elementos que desaparecen
 https://www.youtube.com/watch?v=xhbv_5e0RZo
 
-Reto Automatiza en 30 Días con Playwright | Día 12: -Filtrando por usuario admin #playwright
+Día 12: -Filtrando por usuario admin #playwright
 https://www.youtube.com/watch?v=KRHCrTrZw1A
 
-Reto Automatiza en 30 Días con Playwright | Día 13: Reutilizando la autenticación #playwright
+Día 13: Reutilizando la autenticación #playwright
 https://www.youtube.com/watch?v=2Bd2obN7gLE
 
-Reto Automatiza en 30 Días con Playwright | Día 14: Suma valores de una tabla con #playwright
+Día 14: Suma valores de una tabla con #playwright
 https://www.youtube.com/watch?v=_oiZzoNJeYs
 
-Reto Automatiza en 30 Días con Playwright | Día 15: Agregar un nuevo usuario #playwright
+Día 15: Agregar un nuevo usuario #playwright
 https://www.youtube.com/watch?v=Nw5Wy9qOdkY&feature=youtu.be
 
-Reto Automatiza en 30 Días con Playwright | Día 16: Refactorizando a POM flujo de agregar usuario
+Día 16: Refactorizando a POM flujo de agregar usuario
 https://www.youtube.com/watch?v=BBx-4MfAz3M
 
-Reto Automatiza en 30 Días con Playwright | Día 17: Refactorizando el POM con Modelos de Datos
+Día 17: Refactorizando el POM con Modelos de Datos
 https://www.youtube.com/watch?v=pjkT8Fb_T8M
 
-Reto Automatiza en 30 Días con Playwright | Día 18: Refactorizando el POM con Patrón Factory
+Día 18: Refactorizando el POM con Patrón Factory
 https://www.youtube.com/watch?v=uiURpkZw3N8
 
+Día 19: Leyendo el employee name de forma dinámica
+https://www.youtube.com/watch?v=PZMgW7Fz-W4
