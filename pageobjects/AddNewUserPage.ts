@@ -70,8 +70,16 @@ export class AddNewUserPage {
     }
 
     async selectUserRole(role: string): Promise<void> {
-        await this.selectDropdown('User Role', role);
+        await this.page.locator('div.oxd-grid-item--gutters')
+            .filter({has: this.page.getByText('User Role')})
+            .locator('div.oxd-select-text-input ').click();
+
+        await this.page.getByRole('option', { name: role }).click()
     }
+    /*async selectUserRole(role: string): Promise<void> {
+        await this.selectDropdown('User Role', role);
+        //await this.page.getByRole('option', { name: role }).click();
+    }*/
 
     async selectEmployeeName(employeeName: string): Promise<void> {
 

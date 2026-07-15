@@ -5,6 +5,7 @@ import { TopBarMenu } from "../components/top-bar-menu/TopBarMenu";
 import { Navigate } from "../pageobjects/Navigate";
 import { AddNewUserPage } from "../pageobjects/AddNewUserPage";
 import { UserModel } from "../models/UserModel";
+import { UserFactory } from "../factory/UserFactory";
 
 test('Get all the usernames registered', async ({page}) =>{
 
@@ -224,18 +225,13 @@ test('Add new user', async ({page}) => {
     const topbarmenu = new TopBarMenu(page)
     await topbarmenu.userManagement.clickOnUsers()
 
-    const userToAdd: UserModel = {
-        username: randomUsername,
-        employeeName: employeeToSearch,
-        confirmPassword: password,
-        password: password,
-        role: 'ESS',
-        status: 'Enabled'
-    }
+    const adminUser= UserFactory.createAdmin({
+        employeeName: 'Olivia akhil Harper'
+    })
 
 
     const addNewUserPage = new AddNewUserPage(page)
-    await addNewUserPage.addNewUser(userToAdd)
+    await addNewUserPage.addNewUser(adminUser)
     await addNewUserPage.checkuserWassAddMessage()    
 })
 
