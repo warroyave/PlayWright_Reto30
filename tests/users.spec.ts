@@ -2,6 +2,7 @@ import {expect, test} from "@playwright/test"
 import { LoginPage } from "../pageobjects/LoginPage";
 import { SideMenuOption, SidePanel } from '../components/SidePanel';
 import { TopBarMenu } from "../components/top-bar-menu/TopBarMenu";
+import { UsersTable } from "../components/UsersTable";
 import { Navigate } from "../pageobjects/Navigate";
 import { AddNewUserPage } from "../pageobjects/AddNewUserPage";
 import { UserModel } from "../models/UserModel";
@@ -225,30 +226,17 @@ test('Add new user admin', async ({page}) => {
     const topbarmenu = new TopBarMenu(page)
     await topbarmenu.userManagement.clickOnUsers()
 
-    const allBodyRows = page.getByRole('table').getByRole('rowgroup').nth(1).getByRole('row')
-    
-    // Filas que contienen el rol Admin
-    const currentAdminRows= allBodyRows.filter({
-        has:page.getByRole('cell').nth(2).getByText('Admin')
-    })
+    const userTable = new UsersTable(page)
+    await userTable.editFirstAdminOnTheTable()  
 
-    const firstAdminToSearch = currentAdminRows.nth(0)
-    await expect(firstAdminToSearch, 'No admin users found in the table.').toHaveCount(1)
-
-    await firstAdminToSearch
-    .locator('button')
-    .filter({has: page.locator('i.bi-pencil-fill') }).click()
-
-    const fullUserToSearch = await page.getByRole('textbox', {name: 'Type for hints...'}).inputValue()
-    console.log(`User to search: ${fullUserToSearch}`)
+    const addNewUserPage = new AddNewUserPage(page)
+    const fullUserToSearch = await addNewUserPage.getEmployeeName()
 
     const adminUser= UserFactory.createAdmin({
         employeeName: fullUserToSearch
     })
 
     await page.goBack()
-
-    const addNewUserPage = new AddNewUserPage(page)
     await addNewUserPage.addNewUser(adminUser)
     await addNewUserPage.checkuserWassAddMessage()    
 })
