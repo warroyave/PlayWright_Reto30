@@ -8,6 +8,7 @@ export class AddNewUserPage {
     readonly addButton: Locator;
     readonly saveButton: Locator;
     readonly successMessage: Locator;
+    readonly successMessageDelete: Locator;
 
     readonly usernameInput: Locator;
     readonly passwordInput: Locator;
@@ -24,7 +25,11 @@ export class AddNewUserPage {
             name: 'Save'
         });
 
-        this.successMessage = page.getByText('Successfully Saved');
+        /*this.successMessage = page.getByText('Successfully Saved');
+        this.successMessageDelete = page.getByText('Successfully Deleted');*/
+
+        this.successMessage = page.locator('.oxd-toast');
+        this.successMessageDelete = page.locator('.oxd-toast');
 
         this.employeeInput = page.getByRole('textbox', {
             name: 'Type for hints...'
@@ -120,16 +125,34 @@ export class AddNewUserPage {
     /**
      * Nuevo nombre recomendado.
      */
-    async verifyUserWasAdded(): Promise<void> {
+    /*async verifyUserWasAdded(): Promise<void> {
         await expect(this.successMessage).toBeVisible();
     }
 
+    async verifyUserWasDeleted(): Promise<void> {
+        await expect(this.successMessageDelete).toBeVisible();
+    }*/
+
+    async verifyUserWasAdded(): Promise<void> {
+        await expect(this.successMessage).toBeVisible();
+        await expect(this.successMessage).toContainText('Successfully Saved');
+}
+
+    async verifyUserWasDeleted(): Promise<void> {
+        await expect(this.successMessageDelete).toBeVisible();
+        await expect(this.successMessageDelete).toContainText('Successfully Deleted');
+}
     /**
      * Alias para mantener compatibilidad con los tests existentes.
      */
     async checkuserWassAddMessage(): Promise<void> {
         await this.verifyUserWasAdded();
     }
+
+    async checkuserWasSuccessfullyDeleteMessage(): Promise<void> {
+        await this.verifyUserWasDeleted();
+    }
+
     // Reto 17
     async addNewUser(user: UserModel){
         await this.clickOnAdd()
@@ -144,6 +167,7 @@ export class AddNewUserPage {
 
     // Reto 21
     async getEmployeeName(): Promise<string> {
+        await expect(this.page.getByRole('textbox', {name: 'Type for hints...'})).toHaveValue(/\S/)
         const fullUserToSearch = await this.page.getByRole('textbox', {name: 'Type for hints...'}).inputValue()
         console.log(`User to search: ${fullUserToSearch}`)
         return fullUserToSearch

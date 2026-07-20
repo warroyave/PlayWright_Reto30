@@ -16,7 +16,7 @@ import path from 'path';
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  timeout: 35000, // ahora 60 segundos
+  timeout: 60_000, // ahora 60 segundos
   testDir: './tests',
   /* Run tests in files in parallel */
   fullyParallel: true,

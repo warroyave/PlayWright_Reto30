@@ -213,18 +213,12 @@ test ('Capture all amounts', async({page}) =>{
 
 test('Add new user admin', async ({page}) => {
 
-    const navigate = new Navigate(page)
-    await navigate.toDasboard()
-    
     const randomUsername = 'goku' + crypto.randomUUID().slice(0, 30)
     const password = 'Password123'
-    const employeeToSearch = 'Qwerty LName'  
+    const employeeToSearch = 'Qwerty LName'
 
-    const sidePanel = new SidePanel(page)
-    await sidePanel.clickOnOption(SideMenuOption.ADMIN)
-
-    const topbarmenu = new TopBarMenu(page)
-    await topbarmenu.userManagement.clickOnUsers()
+    const navigate = new Navigate(page)
+    await navigate.toUsers()
 
     const userTable = new UsersTable(page)
     await userTable.editFirstAdminOnTheTable()  
@@ -348,3 +342,74 @@ test('Add new user ESS', async ({page}) => {
     await addNewUserPage.addNewUser(adminUser)
     await addNewUserPage.checkuserWassAddMessage()    
 })
+
+test('Delete user admin', async ({ page }) => {
+
+    // Arrange
+    const navigate = new Navigate(page);
+    await navigate.toUsers();
+
+    const userTable = new UsersTable(page);
+    await userTable.editFirstAdminOnTheTable();
+
+    const addNewUserPage = new AddNewUserPage(page);
+    const fullUserToSearch = await addNewUserPage.getEmployeeName();
+
+    const adminUser = UserFactory.createAdmin({
+        employeeName: fullUserToSearch
+    });
+
+    await page.goBack();
+
+    await addNewUserPage.addNewUser(adminUser);
+    await addNewUserPage.checkuserWassAddMessage();
+
+    // Act
+    await userTable.clickOnDeleteActionByUsername(adminUser.username);
+    await userTable.acceptDeleteUser();
+
+    // Assert
+    await expect(page.locator('.oxd-toast'))
+        .toContainText('Successfully Deleted');
+
+    const deletedUser = page
+        .getByRole('table')
+        .getByRole('row')
+        .filter({ hasText: adminUser.username });
+
+    await expect(deletedUser).toHaveCount(0);
+});
+
+test('Cancel delete user admin', async ({ page }) => {
+
+    // Arrange
+    const navigate = new Navigate(page);
+    await navigate.toUsers();
+
+    const userTable = new UsersTable(page);
+    await userTable.editFirstAdminOnTheTable();
+
+    const addNewUserPage = new AddNewUserPage(page);
+    const fullUserToSearch = await addNewUserPage.getEmployeeName();
+
+    const adminUser = UserFactory.createAdmin({
+        employeeName: fullUserToSearch
+    });
+
+    await page.goBack();
+
+    await addNewUserPage.addNewUser(adminUser);
+    await addNewUserPage.checkuserWassAddMessage();
+
+    // Act
+    await userTable.clickOnDeleteActionByUsername(adminUser.username);
+    await userTable.cancelDeleteUser();
+
+    // Assert
+    const existingUser = page
+        .getByRole('table')
+        .getByRole('row')
+        .filter({ hasText: adminUser.username });
+
+    await expect(existingUser).toHaveCount(1);
+});

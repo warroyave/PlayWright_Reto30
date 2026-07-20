@@ -35,13 +35,31 @@ export class UsersTable {
             .locator('button')
             .filter({has: this.page.locator('i.bi-pencil-fill') }).click()
 
+    }
+    async clickOnDeleteActionByUsername(username: string){
+        const allBodyRows = this.getAllBodyRows()
 
+        const filteredRowsByusername = allBodyRows.filter(
+            {
+                has: this.page.getByRole('cell').nth(1).getByText(username)
+            }
+        )
+        expect(filteredRowsByusername, `No rows contain username: ${username} were found`).toHaveCount(1)
+        
+        await filteredRowsByusername
+        .locator('button')
+        .filter({has: this.page.locator('i.bi-trash')})
+        .click()
+
+    }
+
+    async acceptDeleteUser(){
+        await this.page.getByRole('button', {name: /Yes, Delete/}).click()
+
+    }
+
+    async cancelDeleteUser(): Promise<void> {
+        await this.page.getByRole('button', { name: /No, Cancel/ }).click();
     }
     
 }
-    
-    
-
-    
-
-    
