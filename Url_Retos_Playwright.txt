@@ -72,3 +72,6 @@ https://www.youtube.com/watch?v=JJQtFLODCtQ
 
 Día 22: Agregando tags
 https://www.youtube.com/watch?v=U10WyEJoGso
+
+Día 23: Ejecución en github actions
+https://www.youtube.com/watch?v=ZYfBbf-vS-E
