@@ -211,7 +211,7 @@ test ('Capture all amounts', async({page}) =>{
     console.log('Valor Minimo: ', minimo)
 })
 
-test('Add new user admin', async ({page}) => {
+test('Add new user admin @users|@slow', async ({page}) => {
 
     const randomUsername = 'goku' + crypto.randomUUID().slice(0, 30)
     const password = 'Password123'
@@ -343,7 +343,7 @@ test('Add new user ESS', async ({page}) => {
     await addNewUserPage.checkuserWassAddMessage()    
 })
 
-test('Delete user admin', async ({ page }) => {
+test('Delete user admin @users', async ({ page }) => {
 
     // Arrange
     const navigate = new Navigate(page);
